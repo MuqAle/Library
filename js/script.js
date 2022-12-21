@@ -48,18 +48,30 @@ function displayBook(){
     switchLabel.appendChild(checkBox);
     switchLabel.appendChild(slider);
     bookPages.classList.add('page');
+    const switchContainer = document.createElement('div');
+    switchContainer.classList.add('switch_label')
+    const readLabel = document.createElement('div');
+    readLabel.textContent = 'Read:'
+    switchContainer.append(readLabel);
+    switchContainer.append(switchLabel)
     card.appendChild(deleteBook);
     card.appendChild(bookName);
     card.appendChild(bookAuthor);
     card.appendChild(bookPages);
-    card.appendChild(switchLabel);
+    card.appendChild(switchContainer);
     deleteBook.textContent = 'X';
     bookName.textContent = `Name: ${myLibrary[book].title}`;
     bookAuthor.textContent = `Author: ${myLibrary[book].author}`;
     bookPages.textContent = `Pages: ${myLibrary[book].pages}`;
+    checkBox.checked = myLibrary[book].read;
     deleteBook.addEventListener('click', (e) => {
       card.classList.add('delete_card');
       deleteCard(e)
+    })
+    checkBox.addEventListener('click', () => {
+      myLibrary[book].read = checkBox.checked
+      displayBook()
+      console.log(myLibrary)
     })
   }
 }
@@ -80,6 +92,7 @@ function clearInput() {
   titleValue.value = '';
   authorValue.value = '';
   pagesValue.value = '';
+  toggleBtn.checked = false
 }
 
 
@@ -100,9 +113,6 @@ createBook.addEventListener('click',(e) => {
   console.log(myLibrary)
   e.preventDefault();
 })
-
-
-// container.addEventListener('click', deleteCard);
 
 
 

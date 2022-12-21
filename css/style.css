@@ -138,6 +138,7 @@ input:checked + .slider:before {
     transform: translateX(26px);
   }
 
+
 .container{
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -189,4 +190,15 @@ input:checked + .slider:before {
   width: 20px;
   border: none;
   background-color: transparent;
+}
+
+.delete_book:hover{
+  transform: scale(1.1);
+}
+
+.switch_label{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-right: 10px;
 }
