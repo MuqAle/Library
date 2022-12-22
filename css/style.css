@@ -150,6 +150,7 @@ input:checked + .slider:before {
 .book_card{
   height: 200px;
   border: solid #000000;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
