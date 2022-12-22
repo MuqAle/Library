@@ -70,7 +70,7 @@ function displayBook(){
     })
     checkBox.addEventListener('click', () => {
       myLibrary[book].read = checkBox.checked
-      displayBook()
+      setTimeout(displayBook, 400);
       console.log(myLibrary)
     })
   }
