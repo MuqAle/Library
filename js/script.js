@@ -8,6 +8,7 @@ const newBook = document.querySelector('.new_book');
 const popForm = document.querySelector('.popup_form');
 const closeBtn = document.querySelector('.close_btn');
 const toggleBtn = document.querySelector('#check_box')
+const form = document.querySelector('form')
 
 const myLibrary = [];
 
@@ -73,10 +74,11 @@ function displayBook(){
     checkBox.addEventListener('click', () => {
       myLibrary[book].read = checkBox.checked
       setTimeout(displayBook, 400);
-      console.log(myLibrary)
     })
   }
 }
+
+
 
 function deleteCard(e) {
   if (e.target.parentElement.className === 'book_card delete_card'){
@@ -85,9 +87,6 @@ function deleteCard(e) {
   }
   displayBook();
 }
-
-
-
 
 
 function clearInput() {
@@ -107,13 +106,50 @@ closeBtn.addEventListener('click', () => {
   clearInput()
 })
 
-createBook.addEventListener('click',(e) => {
-  addBookToLibrary();
-  displayBook()
-  popForm.classList.remove('active');
-  clearInput();
-  e.preventDefault();
+titleValue.addEventListener('input', () => {
+  if(titleValue.validity.valueMissing){
+    titleValue.setCustomValidity('Please enter a book title')
+  }else{
+    titleValue.setCustomValidity("")
+  }
 })
+
+authorValue.addEventListener('input', () => {
+  if(authorValue.validity.valueMissing){
+    authorValue.setCustomValidity('Please enter a book title')
+  }else{
+    authorValue.setCustomValidity("")
+  }
+})
+
+pagesValue.addEventListener('input', () => {
+  if(pagesValue.validity.valueMissing){
+    pagesValue.setCustomValidity('Please enter a book title')
+  }else{
+    pagesValue.setCustomValidity("")
+  }
+})
+
+
+createBook.addEventListener('click',(e) => {
+  
+  if(titleValue.validity.valueMissing){
+      titleValue.setCustomValidity('Please enter a book title')
+    }
+  else if(authorValue.validity.valueMissing){
+      authorValue.setCustomValidity('Please enter a book title')
+    }
+  else if(pagesValue.validity.valueMissing){
+      pagesValue.setCustomValidity('Please enter a book title')
+    }
+  else{
+    e.preventDefault()
+    addBookToLibrary();
+    displayBook()
+    popForm.classList.remove('active');
+    clearInput();}
+})
+
 
 
 
